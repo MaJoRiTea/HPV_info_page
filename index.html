@@ -3,6 +3,108 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>HPV_Praevention_Gruende</title>
+		<link rel="stylesheet" href="styling.css" />
+		<script src="./script.js" type="text/javascript"></script>
 	</head>
-	<body></body>
+
+	<body>
+		<header><h1>Impfen gegen Krebs - HPV-Praevention</h1></header>
+		<br/>
+		<main>
+			<section name="HPV_und_Impfung">
+			
+				<div name="HPV_basic">
+			
+					<button type="button" class="collapsible">Was ist HPV?</button>
+					<div id="virus_basic_info" class="content">
+			
+						<img src="./imgs/HPV.PNG" alt="ca. 300.000 Menschen sterben pro Jahr durch von HPV ausgelösten Krebs." height="500" width="500" />			
+						<br/>
+						<img src="./imgs/HPV_infektion.PNG" alt="ca. 80% der Menschen infizieren sich mindestens einmal im Leben mit HPV" height="500" width="500" />
+						<br/>
+						<img src="./imgs/everyonehashpv.PNG" alt="ca. 80% der Menschen infizieren sich mindestens einmal im Leben mit HPV" height="500" width="500" />
+					</div>
+
+					<br/>
+					<br/>
+
+					<button type="button" class="collapsible">Was macht HPV?</button>
+			
+					<div id="virus_basic_info" class="content">
+						<img src="./imgs/wheredoesitcancer.PNG" alt="">
+						<br/>
+						<img src="./imgs/cancerkillspeople.PNG" alt="ca. 300.000 Menschen sterben pro Jahr durch von HPV ausgelösten Krebs." height="500" width="500" />
+			
+						<br/>
+						<p>Meistens hat eine HPV-Infektion keine Folgen. Manchmal löst sie jedoch Krebs aus.</p>
+					</div>
+			
+				</section>
+				<br/>
+			<section name="früher_ist_besser">
+
+				<button type="button" class="collapsible">Warum und wie impfen?</button>
+			
+				<div id="vaccine" class="content">
+					<p>HPV kann Krebs auslösen. Die HPV-Impfung ist jedoch ein verlässlicher Schutz.</p>
+					<p>Dabei muss jedoch beachtet werden, dass der tatsächliche Schutz vor HPV vom Alter und der Anzahl verimpfter Dosen abhängt.</p>
+					<p>Sie können im Tool unten ausprobieren, wann der Impfschutz am besten ist.</p>
+				<label for="Alter">Geimpft im Alter von:</label>
+					<select name="Alter" id="Alter">
+ 				 	 <option value="0">unter 14</option>
+ 					 <option value="1">14-18</option>
+  					 <option value="2">18+</option>
+					</select>
+				
+				<label for="Dosen">Erhaltene Impfdosen</label>
+					<select name="Dosen" id="Dosen">
+						<option value="0">nicht Geimpft</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					Schutz: <p id="Wirkung"></p>
+					<button id="wirkcalc" onclick="wirkkalk()">Schutzwirkung Berechnen</button>
+				</div>
+
+					<br/>
+					<br/>
+
+				<button type="button" class="collapsible">Sicherheit und Wirkung der HPV-Impfung</button>
+			
+				<div id="vaccine" class="content">
+					<img src="./imgs/EffektivitätUndSicherheit.PNG" alt="Hier wäre eine Graphik zum Thema Impfwirkung und Sicherheit.">
+				</div>
+			</section>
+		</main>
+		<script>
+			var coll = document.getElementsByClassName("collapsible");
+			var i;
+			const wirktable = [["keiner","sehr effektiv","sehr effektiv","sehr effektiv"],["keiner","mäßiger Schutz","mäßiger Schutz","verlässlicher Schutz"],["keiner","unwahrscheinlich","unwahrscheinlich","unwahrscheinlich"]]
+			
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+				  content.style.display = "none";
+				} else {
+				  content.style.display = "block";
+				}
+			  });
+			}
+
+			function wirkkalk(){
+				var schwede = document.getElementById("Alter").value
+				var werfen = document.getElementById("Dosen").value
+				document.getElementById("Wirkung").innerHTML = wirktable[schwede][werfen];
+
+			}
+			</script>
+	</body>
+	<footer>
+		created by Marcus Rittler for HLSL-Seminar 
+		<br>
+		image sources: sources 
+	</footer>
 </html>
